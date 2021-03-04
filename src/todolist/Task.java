@@ -69,11 +69,10 @@ public class Task {
     }
 
     /**
-     * Toggles the task completeness.
-     * Set it to false if it was true or set it to true if it was false.
+     * Mark a task as completed.
      */
-    public void toggleCompleted() {
-        complete = !complete;
+    public void setCompleted() {
+        complete = true;
     }
 
     /**
