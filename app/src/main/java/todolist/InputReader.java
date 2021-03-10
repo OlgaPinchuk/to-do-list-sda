@@ -1,9 +1,15 @@
 package todolist;
+import taskmanager.*;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class InputReader {
     private Scanner reader;
     private ToDoList tasks;
+    TaskManager [] taskManagers = { new ListPrinter(), new Creator(), new Editor(), new FileWriter() };
+
 
     /**
      * Create a new InputReader that reads input from the text terminal.
@@ -18,38 +24,26 @@ public class InputReader {
      */
 
     public void start() {
-        boolean exit = false;
-        int selection;
-
         printWelcome();
         printTasksStatus();
 
-        while (!exit) {
-            printChoices();
-            selection = reader.nextInt();
-            switch (selection) {
-                case 1 :
-                    System.out.println("Test line: choice 1");
-                    exit = true;
-                    break;
-
-                case 2 :
-                    System.out.println("Test line: choice 2");
-                    exit = true;
-                    break;
-                case 3 :
-                    System.out.println("Test line: choice 3");
-                    exit = true;
-                    break;
-                case 4 :
-                    System.out.println("Test line: choice 4");
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Make your choice");
+        int choice = 0;
+        while(choice <= 0 || choice >= taskManagers.length) {
+            try {
+                printOptions();
+                choice = reader.nextInt();
+                System.out.println("Your choice: " + taskManagers[choice-1].getClass().getSimpleName());
+                taskManagers[choice-1].run();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: Invalid Menu Selection.");
+                System.out.println("Available options");
+            }
+            catch(InputMismatchException e){
+                System.out.println("Error: Menu selection must be an integer! Please try again:");
+                reader.next();
             }
         }
-
+        reader.close();
     }
     public void printWelcome() {
         System.out.println();
@@ -60,12 +54,16 @@ public class InputReader {
         System.out.println("You have " + tasks.getNotCompetedCount() + " todo and " + tasks.getCompletedCount() + " tasks are done!");
     }
 
-    private void printChoices() {
-        System.out.println("Pick an option:");
-        System.out.println("\t (1) - Show Task List (by date or project)");
-        System.out.println("\t (2) - Add New Task");
-        System.out.println("\t (3) - Edit Task (update, mark as done, remove)");
-        System.out.println("\t (4) - Save and Quit");
+    private void printOptions() {
+        String [] options = {
+                "Show Task List (by date or project)",
+                "Add New Task",
+                "Edit Task (update, mark as done, remove)",
+                "Save to File and Quit"
+        };
+
+        IntStream.range(0, taskManagers.length)
+                .forEach(i -> System.out.println("\t (" + (i+1) + ") - " + options[i]));
     }
 
 
