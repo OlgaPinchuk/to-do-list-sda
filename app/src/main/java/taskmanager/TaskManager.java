@@ -1,5 +1,5 @@
 package taskmanager;
 
 public interface TaskManager {
-    void run();
+    boolean run();
 }
