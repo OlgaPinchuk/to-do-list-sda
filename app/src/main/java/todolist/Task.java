@@ -1,6 +1,7 @@
 package todolist;
 
 import java.time.LocalDate;
+
 /**
  * Class ToDoItem - an item in a tasks list.
  *
@@ -18,18 +19,17 @@ public class Task {
     private LocalDate dueDate; // stores a task deadline date;
 
     /**
-     /**
      * Constructor - initialise a new task.
      * Initially task is not completed.
      * @param taskTitle The task title.
      * @param projectName The name of the project.
      * @param deadlineDate The due date for a task completion.
      */
-    public Task(String taskTitle, String projectName, String deadlineDate) {
+    public Task(String taskTitle, String projectName, LocalDate deadlineDate) {
         title = taskTitle;
         project = projectName;
         complete = false;
-        dueDate = LocalDate.parse(deadlineDate);
+        dueDate = deadlineDate;
     }
 
     /**
@@ -68,6 +68,11 @@ public class Task {
         return complete;
     }
 
+    public String printCompleted() {
+        return complete ? "done" : "to do";
+    }
+
+
     /**
      * Mark a task as completed.
      */
@@ -88,4 +93,10 @@ public class Task {
     public void setDueDate(LocalDate newDate) {
          dueDate = newDate;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-20s %-20s %-15s %-10s", title, project, dueDate, printCompleted());
+    }
 }
+
