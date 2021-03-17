@@ -22,7 +22,7 @@ public class ListPrinter implements TaskManager {
             case 1 -> InputReader.tasks.sortByProject();
             case 2 -> InputReader.tasks.sortByDate();
         }
-
+        InputReader.tasks.showList();
     }
 
     public void listOptions() {
