@@ -45,7 +45,33 @@ public class Editor implements TaskManager {
 
 
     public void editTask(Task task) {
-        System.out.println("Update test");
+        Scanner keyboard = new Scanner(System.in);
+        try {
+            System.out.println("To change the task's fields please provide the following:");
+            System.out.println("Update the field or just press ENTER to skip editing the field");
+            System.out.println("New Title:");
+            String newTitle = keyboard.nextLine();
+            if(!InputReader.inputIsEmpty(newTitle)) {
+                System.out.println("Title is not empty");
+                task.setTitle(newTitle);
+            }
+            System.out.println("New Project:");
+            String newProject = keyboard.nextLine();
+            if(!InputReader.inputIsEmpty(newProject)) {
+                System.out.println("Project is not empty");
+                task.setProject(newProject);
+            }
+            System.out.println("New Due Date [yyyy-MM-dd]:");
+            String newDueDate = keyboard.nextLine();
+            if(!InputReader.inputIsEmpty(newDueDate)) {
+                System.out.println("Due Date is not empty");
+                task.setDueDate(newDueDate);
+            }
+
+        }
+        catch(Exception e) {
+            System.out.println("The error occurs:"+ e.getMessage());
+        }
     }
 
 }

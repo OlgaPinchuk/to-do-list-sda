@@ -1,6 +1,8 @@
 package todolist;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Class ToDoItem - an item in a tasks list.
@@ -90,8 +92,16 @@ public class Task {
     /**
      * Define the task due date.
      */
-    public void setDueDate(LocalDate newDate) {
-         dueDate = newDate;
+//    public void setDueDate(LocalDate newDate) {
+//         dueDate = newDate;
+//    }
+    public void setDueDate(String newDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        try {
+            dueDate = LocalDate.parse(newDate, formatter);
+        } catch(DateTimeParseException e) {
+            System.out.println("Invalid date entered!");
+        }
     }
 
     @Override

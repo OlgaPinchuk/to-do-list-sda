@@ -3,7 +3,6 @@ import taskmanager.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class InputReader {
     private final Scanner reader;
@@ -26,7 +25,7 @@ public class InputReader {
 
     public void start() {
         boolean stop = false;
-        printWelcome();
+        Messages.printWelcome();
         printTasksStatus();
 
         int choice = 0;
@@ -50,15 +49,6 @@ public class InputReader {
     }
 
     /**
-     * Print out the welcoming message for the user.
-     */
-
-    public void printWelcome() {
-        System.out.println();
-        System.out.println("Welcome to your awesome ToDo List");
-    }
-
-    /**
      * Print out the message with tasks status.
      */
 
@@ -79,6 +69,15 @@ public class InputReader {
             System.out.println("Input is empty. Please try again");
         }
         return validInput;
+    }
+
+
+    /**
+     * Checks if the user input is empty.
+     * @return Boolean: true if empty, false otherwise.
+     */
+    public static boolean inputIsEmpty(String input) {
+       return (input == null || input.trim().equals(""));
     }
 
 
