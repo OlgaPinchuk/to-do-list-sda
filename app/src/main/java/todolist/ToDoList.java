@@ -2,6 +2,7 @@ package todolist;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.stream.IntStream;
 /**
  * Class ToDoList - list of all tasks.
@@ -94,6 +95,14 @@ public class ToDoList implements Serializable {
         IntStream.range(0, tasks.size())
                 .mapToObj(index -> String.format("%d -> %s", index+1,
                         tasks.get(index).toString())).forEachOrdered(System.out::println);
+    }
+
+    public void sortByProject() {
+        tasks.sort(Comparator.comparing(Task::getProject));
+    }
+
+    public void sortByDate() {
+        tasks.sort(Comparator.comparing(Task::getDueDate));
     }
 
 }
