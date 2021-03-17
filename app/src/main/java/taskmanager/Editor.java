@@ -12,8 +12,8 @@ public class Editor implements TaskManager {
     @Override
     public boolean run() {
         Scanner reader = new Scanner(System.in);
-        System.out.println("Which task would you like to edit?\n");
         if(InputReader.tasks.getSize() > 0) {
+            System.out.println("Which task would you like to edit?");
             InputReader.tasks.showList();
             int index = selectTask()-1;
             Task chosenTask = InputReader.tasks.getTask(index);
