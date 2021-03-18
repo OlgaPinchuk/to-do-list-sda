@@ -5,10 +5,17 @@ import  todolist.Task;
 
 import java.util.Scanner;
 
-
+/**
+ * This class implements TaskManager interface and contains methods for editing tasks in the todolist.
+ *
+ */
 public class Editor implements TaskManager {
-    private final String [] options = {"Edit Task Fields", "Mark Task as Done", "Remove Task"};
+    private final String [] options = {"Edit Task Fields", "Mark Task as Done", "Remove Task"}; //editing options to choose
 
+    /**
+     * Implements run method of the interface TaskManager.
+     *  @return false.
+     */
     @Override
     public boolean run() {
         Scanner reader = new Scanner(System.in);
@@ -26,26 +33,33 @@ public class Editor implements TaskManager {
             }
         }
         else {
-            System.out.println();
             System.out.println("Your list is empty.Please add your first task.");
-            System.out.println();
         }
         return false;
     }
 
-
+    /**
+     * Selects a task to edit.
+     *  @return the index of the task.
+     */
     public int selectTask() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Please choose the task to edit");
         return keyboard.nextInt();
     }
 
+    /**
+     * Prints the options for editing.
+     */
     public void editOptions() {
         System.out.println("How do you want to edit a task?");
         Printer.printOptions(options);
     }
 
-
+    /**
+     *  Chooses and edits the task fields. If user presses ENTER without providing the new value
+     *  the field isn't changed.
+     */
     public void editTask(Task task) {
         Scanner keyboard = new Scanner(System.in);
         try {
@@ -54,19 +68,16 @@ public class Editor implements TaskManager {
             System.out.println("New Title:");
             String newTitle = keyboard.nextLine();
             if(InputReader.inputNotEmpty(newTitle)) {
-                System.out.println("Title is not empty");
                 task.setTitle(newTitle);
             }
             System.out.println("New Project:");
             String newProject = keyboard.nextLine();
             if(InputReader.inputNotEmpty(newProject)) {
-                System.out.println("Project is not empty");
                 task.setProject(newProject);
             }
             System.out.println("New Due Date [yyyy-MM-dd]:");
             String newDueDate = keyboard.nextLine();
             if(InputReader.inputNotEmpty(newDueDate)) {
-                System.out.println("Due Date is not empty");
                 task.setDueDate(newDueDate);
             }
 
