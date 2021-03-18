@@ -2,7 +2,12 @@ package todolist;
 
 import java.util.stream.IntStream;
 
-public class Printer {
+/**
+ * Class Printer - prints the messages to the terminal.
+ *
+ * This class is a part of ToDoList application. Stores and the messages to terminal.
+ */
+public class MessagePrinter {
 
     /**
      * Print out the initial welcome message.
@@ -16,9 +21,19 @@ public class Printer {
 
     /**
      * Print out the options a user can choose.
+     * @param options provides the options to print out.
      */
     public static void printOptions(String[] options) {
         IntStream.range(0, options.length)
                 .forEach(i -> System.out.println("\t (" + (i+1) + ") - " + options[i]));
     }
+
+    /**
+     * Print out the warning if the option is not valid.
+     */
+    public static void invalidOptionWarning() {
+        System.out.println("Invalid Selection.");
+        System.out.println("See available options:");
+    }
 }
+

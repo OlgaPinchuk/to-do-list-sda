@@ -1,13 +1,12 @@
 package taskmanager;
 import todolist.InputReader;
-import todolist.Printer;
+import todolist.MessagePrinter;
 import  todolist.Task;
 
 import java.util.Scanner;
-
 /**
- * This class implements TaskManager interface and contains methods for editing tasks in the todolist.
  *
+ * This class implements TaskManager interface and contains methods for editing tasks in the todolist.
  */
 public class Editor implements TaskManager {
     private final String [] options = {"Edit Task Fields", "Mark Task as Done", "Remove Task"}; //editing options to choose
@@ -53,12 +52,13 @@ public class Editor implements TaskManager {
      */
     public void editOptions() {
         System.out.println("How do you want to edit a task?");
-        Printer.printOptions(options);
+        MessagePrinter.printOptions(options);
     }
 
     /**
      *  Chooses and edits the task fields. If user presses ENTER without providing the new value
      *  the field isn't changed.
+     * @param task  - the chosen task for editing.
      */
     public void editTask(Task task) {
         Scanner keyboard = new Scanner(System.in);
@@ -80,7 +80,6 @@ public class Editor implements TaskManager {
             if(InputReader.inputNotEmpty(newDueDate)) {
                 task.setDueDate(newDueDate);
             }
-
         }
         catch(Exception e) {
             System.out.println("The error occurs:"+ e.getMessage());

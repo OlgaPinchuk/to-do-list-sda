@@ -36,6 +36,7 @@ public class Task implements Serializable {
     }
 
     /**
+     * Getter method for task title.
      * @return The title of the task.
      */
     public String getTitle() {
@@ -44,12 +45,14 @@ public class Task implements Serializable {
 
     /**
      * Define the title of a task.
+     * @param taskTitle - provides the new title for the task.
      */
     public void setTitle(String taskTitle) {
         title = taskTitle;
     }
 
     /**
+     * * Getter method for task project.
      * @return The name of the project to which the task belongs.
      */
     public String getProject() {
@@ -58,6 +61,7 @@ public class Task implements Serializable {
 
     /**
      * Define the project to which the task belongs.
+     * * @param projectName - provides the new project name for the task.
      */
     public void setProject(String projectName) {
         project = projectName;
@@ -71,6 +75,10 @@ public class Task implements Serializable {
         return complete;
     }
 
+    /**
+     * Return string definition if the task is completed.
+     * @return String describing status of task.
+     */
     public String printCompleted() {
         return complete ? "done" : "to do";
     }
@@ -84,6 +92,7 @@ public class Task implements Serializable {
     }
 
     /**
+     * Getter method for task due date.
      * @return The deadline date of the task.
      */
     public LocalDate getDueDate() {
@@ -91,11 +100,9 @@ public class Task implements Serializable {
     }
 
     /**
-     * Define the task due date.
+     * Sets the task due date.
+     * @param newDate - new deadline date for the task.
      */
-//    public void setDueDate(LocalDate newDate) {
-//         dueDate = newDate;
-//    }
     public void setDueDate(String newDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         try {
@@ -105,6 +112,9 @@ public class Task implements Serializable {
         }
     }
 
+    /**
+     * The methods that overrides toString method.
+     */
     @Override
     public String toString() {
         return String.format("%-20s %-20s %-15s %-10s", title, project, dueDate, printCompleted());

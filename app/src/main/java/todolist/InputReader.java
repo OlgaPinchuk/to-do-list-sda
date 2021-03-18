@@ -4,6 +4,9 @@ import taskmanager.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * This class serves for reading and processing user's input.
+ */
 public class InputReader {
     private final Scanner reader;
     public static ToDoList tasks;
@@ -30,11 +33,11 @@ public class InputReader {
         int choice = 0;
         tasks = FileWriter.openSavedList("tasks.txt");
 
-        Printer.printWelcome();
+        MessagePrinter.printWelcome();
 
         while(choice <= 0 || choice > taskManagers.length || !stop) {
             try {
-                Printer.printOptions(options);
+                MessagePrinter.printOptions(options);
                 choice = reader.nextInt();
                 System.out.println("Your choice: " + taskManagers[choice-1].getClass().getSimpleName());
 
@@ -60,7 +63,7 @@ public class InputReader {
     public static String saveUserTextInput() {
         Scanner keyboard = new Scanner(System.in);
         String validInput;
-        while(inputNotEmpty(validInput = keyboard.nextLine())) {
+        while(!inputNotEmpty(validInput = keyboard.nextLine())) {
             System.out.println("Input is empty. Please try again");
         }
         return validInput;
@@ -71,7 +74,7 @@ public class InputReader {
      * @return Boolean: true if it is not empty, false otherwise.
      */
     public static boolean inputNotEmpty(String input) {
-       return (input == null || input.trim().equals(""));
+       return !(input == null || input.trim().equals(""));
     }
 
 }

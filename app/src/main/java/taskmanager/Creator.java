@@ -5,8 +5,15 @@ import java.time.format.DateTimeParseException;
 
 import todolist.InputReader;
 
+/**
+ * This class implements TaskManager interface and contains methods for creating and adding new tasks in the todolist.
+ */
 public class Creator implements TaskManager {
 
+    /**
+     * Implements run method of the interface TaskManager.
+     *  @return false.
+     */
     @Override
     public boolean run() {
         createTask();

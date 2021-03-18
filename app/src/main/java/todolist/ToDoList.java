@@ -8,9 +8,6 @@ import java.util.stream.IntStream;
  * Class ToDoList - list of all tasks.
  *
  * This class is a part of ToDoList application. It creates a list of the tasks.
- *
- * @author Olha Pinchuk
- * @version 1.0
  */
 public class ToDoList implements Serializable {
     public ArrayList<Task> tasks;
@@ -24,7 +21,8 @@ public class ToDoList implements Serializable {
     }
 
     /**
-     * Finds a task by its index.
+     * Finds a task by its index.\
+     * @param index - task index.
      * @return Task by index.
      */
     public Task getTask(int index) {
@@ -32,6 +30,7 @@ public class ToDoList implements Serializable {
     }
 
     /**
+     * Getter for the number of the tasks in the list.
      * @return The number of the tasks.
      */
     public int getSize() {
@@ -75,13 +74,16 @@ public class ToDoList implements Serializable {
     }
 
     /**
-     * Gets the number of the completed tasks in the todolist.
-     * @return the completed tasks number.
+     * Gets the number of the not completed tasks in the todolist.
+     * @return the uncompleted tasks number.
      */
     public long getIncompetedCount() {
         return tasks.stream().filter(task -> !task.isCompleted()).count();
     }
 
+    /**
+     * Shows the list of the tasks.
+     */
     public void showList() {
         if(tasks.size() == 0) {
             System.out.println("You have no tasks to do");
@@ -97,10 +99,16 @@ public class ToDoList implements Serializable {
                         tasks.get(index).toString())).forEachOrdered(System.out::println);
     }
 
+    /**
+     * Sorts tasks by project.
+     */
     public void sortByProject() {
         tasks.sort(Comparator.comparing(Task::getProject));
     }
 
+    /**
+     * Sorts tasks by date.
+     */
     public void sortByDate() {
         tasks.sort(Comparator.comparing(Task::getDueDate));
     }
