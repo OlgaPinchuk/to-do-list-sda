@@ -1,7 +1,7 @@
 package taskmanager;
 
 import todolist.InputReader;
-import todolist.Messages;
+import todolist.Printer;
 
 import java.util.Scanner;
 
@@ -27,7 +27,7 @@ public class ListPrinter implements TaskManager {
 
     public void listOptions() {
         System.out.println("Please choose how you want to sort your tasks:");
-        Messages.printOptions(options);
+        Printer.printOptions(options);
     }
 
 

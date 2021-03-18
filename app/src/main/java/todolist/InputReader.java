@@ -22,41 +22,36 @@ public class InputReader {
         reader = new Scanner(System.in);
         tasks = new ToDoList();
     }
-
+    /**
+     * Starts the InputReader.
+     */
     public void start() {
         boolean stop = false;
-        Messages.printWelcome();
-        printTasksStatus();
-
         int choice = 0;
+        tasks = FileWriter.openSavedList("tasks.txt");
+
+        Printer.printWelcome();
+
         while(choice <= 0 || choice > taskManagers.length || !stop) {
             try {
-                Messages.printOptions(options);
+                Printer.printOptions(options);
                 choice = reader.nextInt();
                 System.out.println("Your choice: " + taskManagers[choice-1].getClass().getSimpleName());
+
+                //Runs the corresponding TaskManager depending on the user choice.
+                // Only FileWriter returns true and it stops the application
                 stop = taskManagers[choice-1].run();
 
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Error: Invalid Menu Selection.");
-                System.out.println("Available options");
-            }
-            catch(InputMismatchException e){
-                System.out.println("Error: Menu selection must be an integer! Please try again:");
+                System.out.println("Invalid Selection.");
+                System.out.println("Available options[1-4]:");
+            } catch(InputMismatchException e){
+                System.out.println("Menu selection should be an integer! Please try again:");
                 reader.next();
             }
         }
         reader.close();
     }
-
-    /**
-     * Print out the message with tasks status.
-     */
-
-    private void printTasksStatus() {
-        System.out.println("You have " + InputReader.tasks.getIncompetedCount() + " todo and " + InputReader.tasks.getCompletedCount() + " tasks are done!");
-    }
-
-
 
     /**
      * Saves user's text input. Checks if it's any.
@@ -65,20 +60,18 @@ public class InputReader {
     public static String saveUserTextInput() {
         Scanner keyboard = new Scanner(System.in);
         String validInput;
-        while((validInput = keyboard.nextLine()).isEmpty()) {
+        while(inputNotEmpty(validInput = keyboard.nextLine())) {
             System.out.println("Input is empty. Please try again");
         }
         return validInput;
     }
 
-
     /**
-     * Checks if the user input is empty.
-     * @return Boolean: true if empty, false otherwise.
+     * Checks if the user input is not empty.
+     * @return Boolean: true if it is not empty, false otherwise.
      */
-    public static boolean inputIsEmpty(String input) {
+    public static boolean inputNotEmpty(String input) {
        return (input == null || input.trim().equals(""));
     }
-
 
 }

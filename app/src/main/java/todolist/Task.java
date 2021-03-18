@@ -1,5 +1,6 @@
 package todolist;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -13,7 +14,7 @@ import java.time.format.DateTimeParseException;
  * @author Olha Pinchuk
  * @version 1.0
  */
-public class Task {
+public class Task implements Serializable {
 
     private String title;
     private String project; // stores a project to which a task belongs;
