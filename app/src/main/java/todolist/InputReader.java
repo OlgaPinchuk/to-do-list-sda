@@ -39,7 +39,7 @@ public class InputReader {
             try {
                 MessagePrinter.printOptions(options);
                 choice = reader.nextInt();
-                System.out.println("Your choice: " + taskManagers[choice-1].getClass().getSimpleName());
+                System.out.println("Your choice: " + taskManagers[choice-1].toString());
 
                 //Runs the corresponding TaskManager depending on the user choice.
                 // Only FileWriter returns true and it stops the application

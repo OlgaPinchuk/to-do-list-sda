@@ -60,4 +60,13 @@ public class Creator implements TaskManager {
         }
         return dueDate;
     }
+
+    /**
+     * Returns the string with short class description
+     * @return string with class description
+     */
+    @Override
+    public String toString() {
+        return "adding a new task";
+    }
 }

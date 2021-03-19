@@ -58,5 +58,14 @@ public class ListPrinter implements TaskManager {
         MessagePrinter.printOptions(options);
     }
 
+    /**
+     * Returns the string with short class description
+     * @return string with class description
+     */
+    @Override
+    public String toString() {
+        return "showing a list";
+    }
+
 
 }

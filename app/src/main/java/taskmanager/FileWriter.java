@@ -34,6 +34,8 @@ public class FileWriter implements TaskManager{
 
             output.close();
             file.close();
+            System.out.println("Your tasks are successfully saved");
+            System.out.println("See you later!");
         }
         catch(IOException e)
         {
@@ -64,4 +66,12 @@ public class FileWriter implements TaskManager{
         return tasks;
     }
 
+    /**
+     * Returns the string with short class description
+     * @return string with class description
+     */
+    @Override
+    public String toString() {
+        return "saving a list";
+    }
 }

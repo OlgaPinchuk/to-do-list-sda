@@ -86,4 +86,13 @@ public class Editor implements TaskManager {
         }
     }
 
+    /**
+     * Returns the string with short class description
+     * @return string with class description
+     */
+    @Override
+    public String toString() {
+        return "editing a task";
+    }
+
 }
