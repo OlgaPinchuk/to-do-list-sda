@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>todolist</OriginalElement>
+  <nodes>
+    <node x="804.0" y="0.0">todolist.AppTest</node>
+    <node x="131.29761904761904" y="942.0">todolist.App</node>
+    <node x="386.46428571428567" y="0.0">todolist.Task</node>
+    <node x="604.0" y="425.5">todolist.TaskTest</node>
+    <node x="391.0" y="716.5">todolist.ToDoListTest</node>
+    <node x="269.0" y="303.0">todolist.ToDoList</node>
+    <node x="52.79761904761904" y="672.0">todolist.InputReader</node>
+    <node x="0.0" y="403.5">todolist.MessagePrinter</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.5826771653543307" x="453.5" y="498.00000000000006" />
+  <SelectedNodes>
+    <node>todolist.AppTest</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

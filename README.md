@@ -73,3 +73,9 @@ After restarting:
 
 ![Example 11](screenshots/example11.png)
 ![Example 12](screenshots/example12.png)
+
+## Todo List class diagrams
+[Todolist UML](UML_todolist.png)
+
+### Task manager class diagram
+[Todolist UML](UML_taskmanager.png)
