@@ -78,4 +78,4 @@ After restarting:
 [Todolist UML](UML_todolist.png)
 
 ### Task manager class diagram
-[Todolist UML](UML_taskmanager.png)
+[Taskmanager UML](UML_taskmanager.png)
